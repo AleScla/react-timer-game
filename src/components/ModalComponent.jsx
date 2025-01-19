@@ -36,7 +36,7 @@ export default function ModalComponent({time, ref, timeRemaining, onReset}){
 // nelle vecchie versioni sarebbe così: 
 
 // import {forwardRef} from 'react'
-// const ModalComponent = forwardRef(function ModalComponent({result, time, ref}){
+// const ModalComponent = forwardRef(function ModalComponent({result, time,},  ref){
 //     return(
 //         <dialog ref={ref} className="result-modal">
 //             <h2>You lost</h2>
