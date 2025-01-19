@@ -4,11 +4,11 @@ export default function Player() {
   const inputName = useRef()
   function handleName(){
     if(inputName.current.value){
-      setPlayerName(prevPlayerName => prevPlayerName = inputName.current.value);
+      setPlayerName(inputName.current.value);
       inputName.current.value = '';
     }
     else{
-      setPlayerName(prevPlayerName => prevPlayerName = 'unknown entity')
+      setPlayerName('unknown entity')
     }
   }
   return (
