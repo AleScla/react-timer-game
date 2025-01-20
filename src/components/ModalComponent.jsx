@@ -1,4 +1,5 @@
 import {useImperativeHandle, useRef } from 'react';
+import { createPortal } from 'react-dom'
 export default function ModalComponent({time, ref, timeRemaining, onReset}){
     // in questo caso, l'utilizzo di useRef in combinazione all'hook
     // imperativeHandle, serve a fare in modo che si crei un collegamento
@@ -19,7 +20,10 @@ export default function ModalComponent({time, ref, timeRemaining, onReset}){
             }
         }
     })
-    return(
+    // createPortal crea un 'portale' che permette di selezionare un elemento nel DOM
+    // e decidere che l'output di questo component avverrà proprio nell'elemento selezionato
+    // come secondo argomento di createPortal.
+    return createPortal(
         <dialog ref={displayModal} className="result-modal">
             {timeRemaining <= 0 ? <h2>You lost</h2>: <h2>Your Score: {score}</h2>}
             {timeRemaining > 0 && <p>You clicked it in {clickedIn}</p>}
@@ -28,7 +32,7 @@ export default function ModalComponent({time, ref, timeRemaining, onReset}){
                 <button onClick={onReset}>Close</button>
             </form>
         </dialog>
-    )
+    ), document.getElementById('modal');
 }
 
 // usare il ref direttamente nelle prop è possibile solo da React v19
